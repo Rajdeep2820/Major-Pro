@@ -1,0 +1,50 @@
+/* body{
+    background-color: pink;
+} */
+
+.navbar{
+    height : 4rem;
+}
+.fa-compass{
+    font-size: 1.5rem;
+}
+.nav-link{
+    color : black !important;
+}
+.nav-link:hover{
+    cursor: pointer !important;
+}
+
+/* Footer styling */
+
+.f-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 6rem;
+    gap : 6px;
+    background-color: #F8F9FA;
+    text-align: center;
+}
+.f-info-socials, .f-info-links, .private{
+    width: 100%;
+}
+.f-info-socials i{
+    margin : 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.private{
+    font-size: 14px;
+}
+.f-info-links a{
+    font-size: 14px;
+    text-decoration: none;
+    color : black;
+    margin : 5px;
+}
+.f-info-links a:hover{
+color : blue;
+text-decoration: underline;
+}
