@@ -20,6 +20,7 @@ body{
 }
 .nav-link:hover{
     cursor: pointer !important;
+    font-weight: 700 !important;
 }
 
 /* Footer styling */
@@ -86,4 +87,14 @@ text-decoration: underline;
 .add-btn{
 background-color:#198754 !important;
 border: none !important;
+}
+
+/* Shoq Page */
+.show-img{
+    max-height: 30vh;
+}
+
+.btns{
+    display: flex;
+
 }
