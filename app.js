@@ -7,7 +7,8 @@ const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate")
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-app.set("view engine" , "ejs")
+const {listingSchema} = require("./schema.js");
+app.set("view engine" , "ejs");
 app.set("path" , path.join(__dirname , "views"));
 app.use(express.urlencoded(({extended : true})));
 app.use(methodOverride("_method"));
@@ -39,10 +40,25 @@ app.get("/listings/new" , (req,res)=>{
 })
 
 app.post("/listings" , wrapAsync(async(req,res,next)=>{
-    const newListing = new Listing(req.body.listing);
-    if(!req.body.listing){
-        throw new ExpressError(400, "Send valid data for listing.");
+    // if(!req.body.listing){
+    //     throw new ExpressError(400, "Send valid data for listing.");
+    // }
+    // if(!newListing.description){
+    //     throw new ExpressError(400, "Send valid description for listing.");   
+    // }
+    // if(!newListing.title){
+    //     throw new ExpressError(400, "Send valid title for listing.");   
+    // }
+    // if(!newListing.description){
+    //     throw new ExpressError(400, "Send valid description for listing.");   
+    // }
+    // let result = listingSchema.validate();
+    let result = listingSchema.validate(req.body);
+    console.log(result);
+    if(result.error){
+        throw new ExpressError(400 , result.error);
     }
+    const newListing = new Listing(req.body.listing);
     await newListing.save();
     res.redirect("/listings");
 }));
@@ -87,16 +103,15 @@ app.delete("/listings/:id" , wrapAsync(async(req,res)=>{
 //     res.send("Succesful");
 // })
 
+app.get("/" , (req,res)=>{
+    res.send("I am Groott!");
+})
+
 app.all(/.*/, (req, res, next) => {
     next(new ExpressError(404, "Page not found!"));
 });
 
 app.use((err, req, res, next) => {
     let {statusCode = 500, message="Some Error Occured"} = err;
-    // res.status(statusCode).send(message);
-    res.render("error.ejs" , {message});
+    res.status(statusCode).render("listings/error.ejs" , { message });
 }); 
-
-app.get("/" , (req,res)=>{
-    res.send("I am Groott!");
-})
