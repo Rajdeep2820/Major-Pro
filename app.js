@@ -107,6 +107,10 @@ app.get("/" , (req,res)=>{
     res.send("I am Groott!");
 })
 
+app.get("/" , (rq,res) => {
+    res.send("Its Working!")
+})
+
 app.all(/.*/, (req, res, next) => {
     next(new ExpressError(404, "Page not found!"));
 });
