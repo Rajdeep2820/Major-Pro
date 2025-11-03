@@ -87,6 +87,8 @@ text-decoration: underline;
 .add-btn{
 background-color:#198754 !important;
 border: none !important;
+position: relative;
+left : 6px;
 }
 
 /* Shoq Page */
@@ -96,5 +98,4 @@ border: none !important;
 
 .btns{
     display: flex;
-
 }
