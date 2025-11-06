@@ -45,7 +45,9 @@ app.use(session(sessionOptions));
 app.use(flash());
 app.use((req,res,next) => {
     res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
     next();
+    // console.log( res.locals.success); // to find that success returned an empty array.
 })
 
 app.use("/listings" , listings);
