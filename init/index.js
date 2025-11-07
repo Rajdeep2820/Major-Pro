@@ -12,10 +12,19 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
-const initDB = async ()=>{
+const initDB = async () => {
+  try {
     await Listing.deleteMany({});
     await Listing.insertMany(initData.data);
-    console.log("data is initialized.")
-}
+    console.log("data is initialized.");
+  } catch (e) {
+    console.error("Initialization error:", e);
+  } finally {
+    mongoose.connection.close();
+  }
+};
+
+initDB();
+
 
 initDB();
