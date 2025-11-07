@@ -1,25 +1,14 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
     <div class="row">
-        <h3 class="col-6 offset-3 mt-3 mb-4">SignUp on WanderLust..</h3>
+        <h3 class="col-6 offset-3 mt-3 mb-4">Login on WanderLust..</h3>
         <div class="col-6 offset-3">
-            <form action="/signup" method = 'POST' class="needs-validation" novalidate>
+            <form action="/login" method = 'POST' class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username </label>
                     <input
                     name="username"
                     id="username"
-                    type="text"
-                    class="form-control"
-                    required
-                    />
-                    <div class = "valid-feedback">Looks Good!</div>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input
-                    name="email"
-                    id="email"
                     type="text"
                     class="form-control"
                     required
@@ -35,7 +24,7 @@
                     required
                     />
                 </div>
-                <button class="btn btn-dark add-btn mt-1">SignUp</button> 
+                <button class="btn btn-dark add-btn mt-1">Login</button> 
             </form>
         </div>
     </div>  
