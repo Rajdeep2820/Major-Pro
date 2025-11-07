@@ -88,7 +88,7 @@ text-decoration: underline;
 background-color:#198754 !important;
 border: none !important;
 position: relative;
-left : 6px;
+justify-content: center;
 }
 
 /* Shoq Page */
