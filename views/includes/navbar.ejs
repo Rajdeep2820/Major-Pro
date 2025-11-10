@@ -30,12 +30,16 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div class="navbar-nav"> 
+        <% if (!currUser) { %>
+          <a class="nav-link" href="/signup">Sign Up</a>
+          <a class="nav-link" href="/login">Login</a>
+        <% } %>
+        <% if(currUser) { %>
+          <a class="nav-link" href="/logout">Logout</a>
+        <% } %>        
+      </div> 
     </div>
   </div>
 </nav>
