@@ -8,24 +8,18 @@
         <div class="card col-md-6 offset-md-3 mt-4 listing-card">
             <img src="<%= listing.image%>" class="card-img-top show-img" alt="Listing_image">
             <div class="card-body">
-                <p class="card-text">
-                    <br>
-                    <%= listing.description %><br>
+                    <p class="mt-2">Owned By : <i><%= listing.owner.username %></i></p>
+                    <p><%= listing.description %><br></p>
                         <% if(listing.price !==null && listing.price !==undefined) { %>
-                            &#8377 <b>
-                                <%= listing.price.toLocaleString("en-IN") %>
-                            </b> / night<br>
+                            <p>&#8377 <%= listing.price.toLocaleString("en-IN") %>/ night</p>
                             <% } else { %>
-                                Price not available<br>
+                                <p>Price not available</p>
                                 <% } %>
-                                    <%= listing.location %><br>
-                                        <%= listing.country%><br>
-                </p>
+                                    <p><%= listing.location %> , <%= listing.country%></p>
             </div>
         </div>
 
-
-        <div class="btns">
+        <div class="btns" style="margin-top: -25px; position: relative; left: 6px;">
             <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark offset-3 add-btn">Edit</a>
 
             <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
