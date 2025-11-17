@@ -8,14 +8,20 @@
         <div class="card col-md-6 offset-md-3 mt-4 listing-card">
             <img src="<%= listing.image%>" class="card-img-top show-img" alt="Listing_image">
             <div class="card-body">
-                    <p class="mt-2">Owned By : <i><%= listing.owner.username %></i></p>
-                    <p><%= listing.description %><br></p>
-                        <% if(listing.price !==null && listing.price !==undefined) { %>
-                            <p>&#8377 <%= listing.price.toLocaleString("en-IN") %>/ night</p>
-                            <% } else { %>
-                                <p>Price not available</p>
-                                <% } %>
-                                    <p><%= listing.location %> , <%= listing.country%></p>
+                <p class="mt-2">Owned By : <i>
+                        <%= listing.owner.username %>
+                    </i></p>
+                <p>
+                    <%= listing.description %><br>
+                </p>
+                <% if(listing.price !==null && listing.price !==undefined) { %>
+                    <p>&#8377 <%= listing.price.toLocaleString("en-IN") %>/ night</p>
+                    <% } else { %>
+                        <p>Price not available</p>
+                        <% } %>
+                            <p>
+                                <%= listing.location %> , <%= listing.country%>
+                            </p>
             </div>
         </div>
 
