@@ -71,9 +71,7 @@ text-decoration: underline;
 .card-body{
     padding: 0 !important;
 }
-.card-text p{
-    font-weight: 400 !important;
-}
+
 .listing-link {
     text-decoration: none;
 }
@@ -97,4 +95,8 @@ position: relative;
 
 .btns{
     display: flex;
+}
+.no-buttons{
+    position: relative;
+    top : -20px;
 }
