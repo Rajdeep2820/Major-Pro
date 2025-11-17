@@ -1,4 +1,5 @@
 const Listing = require("./models/listings");
+const Review = require("./models/reviews")
 const { listingSchema , reviewSchema} = require("./schema.js");
 const ExpressError = require("./utils/ExpressError.js");
 
@@ -6,7 +7,7 @@ module.exports.isLoggedIn = (req,res,next) => {
     console.log(req.user);
     req.session.redirecURL = req.originalUrl;
     if(!req.isAuthenticated()){
-        req.flash("error" , "Log in to create a new Listing.");
+        req.flash("error" , "Log in to create or alter a Listing.");
         return res.redirect("/login");
     }
     next();
@@ -24,7 +25,17 @@ module.exports.isOwner = async (req,res,next) => {
     let listing = await Listing.findById(id);
     if(!listing.owner._id.equals(res.locals.currUser._id)){
         req.flash("error" , "You do not have the permissions to alter the listing.");
-        res.redirect(`/listings/${id}`);
+        return res.redirect(`/listings/${id}`);
+    }
+    next();
+}
+
+module.exports.isReviewAuthor = async (req,res,next) => {
+    let { id , reviewId } = req.params;
+    let review = await Review.findById(reviewId);
+    if(!review.author.equals(res.locals.currUser._id)){
+        req.flash("error" , "You do not have the permissions to delete this review.");
+        return res.redirect(`/listings/${id}`);
     }
     next();
 }
