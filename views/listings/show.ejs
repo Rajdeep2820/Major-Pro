@@ -62,7 +62,7 @@
 
                                 <button class="btn btn-outline-dark">Submit</button>
                             </form>
-                            <hr/>
+                            <hr />
                             <% } %>
 
                                 <h4><span class="badge text-bg-secondary">All Reviews</span></h4>
@@ -70,8 +70,10 @@
                                     <% for(review of listing.reviews){ %>
                                         <div class="card col-5 ms-5 gap-5 mb-3">
                                             <div class="card-body mt-2">
-                                                <b><p class="card-title">@<%= review.author.username %>
-                                                </p></b>
+                                                <b>
+                                                    <p class="card-title">@<%= review.author.username %>
+                                                    </p>
+                                                </b>
                                                 <p class="card-text">
                                                     <%= review.comment %>
                                                 </p>
