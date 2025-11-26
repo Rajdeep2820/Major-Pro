@@ -14,14 +14,15 @@ router.route("/")
         wrapAsync(listingController.createNewListing)
     );
 
+    // New Route
+router.get("/new", isLoggedIn, listingController.renderNewForm);
+
 // Show ROUTE....// Update Route....// Delete route
 router.route("/:id")
 .get(wrapAsync(listingController.showListing))
 .put(isOwner, validateListing, isLoggedIn, wrapAsync(listingController.saveEdit))
 .delete(isOwner, isLoggedIn, wrapAsync(listingController.destroy))
 
-// New Route
-router.get("/new", isLoggedIn, listingController.renderNewForm);
 
 // Edit Route
 router.get("/:id/edit", isOwner, isLoggedIn, wrapAsync(listingController.editListing));
